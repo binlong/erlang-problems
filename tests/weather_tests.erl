@@ -14,3 +14,7 @@ forecast_test() ->
   ?assertEqual(["Windy", "Clear", "Rainy", "Hot", "Cold"], Value),
   % And it took less than 2 seconds
   ?assert(Time < 1 * 1000 * 1000).
+
+extract_forecast_test() ->
+  Value = weather:extract_forecast_weather({weather, {current,  84, "Clear"}, {forecast,  72, "Windy"}}),
+  ?assertEqual("Windy", Value).
